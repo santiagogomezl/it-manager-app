@@ -1,0 +1,20 @@
+.Dashboard{
+
+}
+
+.dashboard-header{
+    height: auto;
+}
+
+.dashboard-filter{
+    min-height: 50px;
+}
+
+.dashboard-add-button{
+    min-height: 50px;
+}
+
+.dashboard-body{
+    height: auto;
+    min-height: 400px;
+}

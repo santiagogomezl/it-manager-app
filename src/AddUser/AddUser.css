@@ -1,0 +1,12 @@
+.AddUser{
+    min-height: 400px;
+}
+
+.add-user-form{
+
+}
+
+.add-user-form input{
+    display: block;
+    margin:auto;
+}
