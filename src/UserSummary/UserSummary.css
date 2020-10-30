@@ -1,0 +1,22 @@
+.UserSummary{
+    margin-top:20px;
+    margin-bottom: 20px;
+    
+}
+
+.user-details{
+    display: flex;
+    justify-content: center;
+}
+
+.user-details ul{
+    list-style-type: none;
+}
+
+.user-detail-type li{ 
+    text-align: right;
+}
+
+.user-detail-data li{ 
+    text-align: left;
+}

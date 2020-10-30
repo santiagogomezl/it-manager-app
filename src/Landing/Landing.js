@@ -10,13 +10,18 @@ class Landing extends Component{
             <h1>HERO</h1>
           </div>
           <section className='landing-section'>
-            Section 1
+            <h2>Manage IT Resources</h2>
+            <p>
+                Manage your users and your company's IT resources all in one place.
+                Visualize users, workstations and software. 
+
+            </p>
           </section>
           <section className='landing-section'>
-            Section 2
+            <h2>Stay Updated</h2>
           </section>
           <section className='landing-section'>
-            Section 3
+            <h2>Create Tasks</h2>
           </section>
       </div>
     )
