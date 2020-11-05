@@ -23,29 +23,29 @@ class User extends Component{
   componentDidMount(){
     const user = this.context.users.find(user => this.props.match.params.id === String(user.id))
     if(user){
-        const trade = this.context.trades.find(trade => trade.id === user.tradeId)
-        const role = this.context.roles.find(role => role.id === user.roleId)
-        const workstation = this.context.workstations.find(workstation => workstation.id === user.workstationId)
+        const trade = this.context.trades.find(trade => trade.id === user.trade_id)
+        const role = this.context.roles.find(role => role.id === user.role_id)
+        const workstation = this.context.workstations.find(workstation => workstation.id === user.workstation_id)
         this.setState({
             id: user.id,
-            firstName: user.firstName,
-            lastName: user.lastName,
+            firstName: user.first_name,
+            lastName: user.last_name,
             email: user.email,
             trade: trade.name,
             role: role.title,
             workstation:{
                 id: workstation.id,
-                hostName: workstation.hostName,
+                hostName: workstation.host_name,
                 os: workstation.os,
                 version: workstation.version,
                 memory: workstation.memory,
-                freeSpace: workstation.freeSpace,
-                hotfixId: workstation.hotfixId,
-                hotfixInfo: workstation.hotfixInfo,
-                hotfixDate: workstation.hotfixDate
+                freeSpace: workstation.free_space,
+                hotfixId: workstation.hotfix_id,
+                hotfixInfo: workstation.hotfix_info,
+                hotfixDate: workstation.hotfix_date
             },
       })
-      const tasks = this.context.tasks.filter((task) => String(task.userId) === String(user.id))
+      const tasks = this.context.tasks.filter((task) => String(task.user_id) === String(user.id))
       if(tasks){this.setState({ tasks: tasks})}
     }else{
       this.props.history.push('/dashboard')
@@ -60,7 +60,7 @@ class User extends Component{
       const hotfixDates = this.state.workstation.hotfixDate
       hotFixes = hotfixInfos.map((hotfixInfo,i) => {
         return(
-        <li key={`hotfix-${i}`}>{`${hotfixInfo} compleated on: ${hotfixDates[i]}`}</li>
+        <li key={`hotfix-${i}`}>{`${hotfixInfo} compleated on: ${hotfixDates[i].substring(0, 10)}`}</li>
         )
       })
     }

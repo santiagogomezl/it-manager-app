@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ITManagerContext from '../ITManagerContext'
 import './Tasks.css'
+import config from '../config'
 
 class Tasks extends Component{
 
@@ -21,54 +22,56 @@ class Tasks extends Component{
         let tasks = this.state.tasks 
         const taskIndex = tasks.indexOf(tasks.find(task => String(task.id) === String(taskId)))
         
-        tasks[taskIndex].statusCode = Number(newStatusCode)
+        tasks[taskIndex].status_code = Number(newStatusCode)
         this.setState({
             tasks: tasks,
             disabled: false
         })
-        console.log(tasks[taskIndex])
         
       }
       
       getStatus(taskId){
           const task = this.state.tasks.find(task => task.id === taskId)
-          return task.statusCode
+          return task.status_code
       }
 
       handleSubmit(event, callback){
         event.preventDefault();
         const tasks = this.state.tasks
-    
-        // const options = {
-        //   method: 'POST',
-        //   body: JSON.stringify(note),
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //     'Authorization': `Bearer ${config.API_KEY}`
-        //   }
-        // };
-    
-        // fetch(`${config.API_ENDPOINT}api/notes`, options)
-        // .then(response => {
-        //     if(!response.ok){
-        //       throw new Error('Something went wrong');
-        //     }
-        //     return response;
-        //   })
-        //   .then(response => response.json())
-          // .then(data => {
-            callback(tasks);
-            const updatedTasks = tasks.filter(task => task.statusCode !== 3)
-            this.setState(
-                { 
-                    tasks: updatedTasks,
-                    disabled: true,
+
+        tasks.forEach(task => {
+                    
+            let method
+            task.status_code !== 3 ? method = 'PATCH' : method = 'DELETE'
+
+            const options = {
+                method: method,
+                body: JSON.stringify(task),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${config.API_KEY}`
                 }
-            );
-            this.props.history.push(`/user/${this.state.id}`);
-          //   }
-          // )
-          // .catch(err => this.displayError(err));
+            }
+        
+            fetch(`${config.API_ENDPOINT}api/tasks/${task.id}`, options)
+            .then(response => {
+                if(!response.ok){
+                    throw new Error('Something went wrong');
+                }
+            })
+            .catch(err => this.displayError(err));
+        })
+
+        callback(tasks);
+        const updatedTasks = tasks.filter(task => task.status_code !== 3)
+        this.setState(
+            { 
+                tasks: updatedTasks,
+                disabled: true,
+            }
+        );
+        this.props.history.push(`/user/${this.state.id}`);
+
       }
     
 
@@ -77,9 +80,10 @@ class Tasks extends Component{
     let tasks
     if(this.state.tasks.length !== 0){
         tasks = this.state.tasks.map((task, i) => {
+            
             return(
                 <div className='form-fieldset user-task' key={`task-${task.id}`}>
-                    <span>{`${task.taskDetails} due on ${task.dueDate}. `}</span>
+                    <span>{`${task.task_details} due on ${task.due_date.substring(0, 10)}. `}</span>
                     <label htmlFor={`task-${task.id}`}>Status: </label>
                     <select 
                         name={`task-${task.id}`} 

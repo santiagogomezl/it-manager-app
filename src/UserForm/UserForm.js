@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ITManagerContext from '../ITManagerContext'
-import { v4 as uuidv4 } from 'uuid';
 import './UserForm.css'
+import config from '../config'
 
 
 class UserForm extends Component{
@@ -44,25 +44,23 @@ state = {
 componentDidMount(){
     const user = this.context.users.find(user => this.props.match.params.id === String(user.id))
     if(user){
-        const workstation = this.context.workstations.find(workstation => workstation.id === user.workstationId)
+        const workstation = this.context.workstations.find(workstation => workstation.id === user.workstation_id)
         this.setState({
             id: user.id,
-            firstName: {value: user.firstName},
-            lastName: {value: user.lastName},
+            firstName: {value: user.first_name},
+            lastName: {value: user.last_name},
             email: {value: user.email},
-            tradeId: {value: user.tradeId},
-            roleId: {value: user.roleId},
+            tradeId: {value: user.trade_id},
+            roleId: {value: user.role_id},
             workstation:{
                 id: workstation.id,
-                hostName: workstation.hostName,
+                hostName: workstation.host_name,
                 os: workstation.os,
                 version: workstation.version,
                 memory: workstation.memory,
-                freeSpace: workstation.freeSpace,
+                freeSpace: workstation.free_space,
             }
       })
-    }else{
-    //   this.props.history.push('/')
     }
 }
 
@@ -103,11 +101,11 @@ updateWorkstation(workstationId){
         this.setState({
             workstation: {
                 id: Number(workstation.id), 
-                hostName: workstation.hostName,
+                hostName: workstation.host_name,
                 os: workstation.os,
                 version: Number(workstation.version),
                 memory: Number(workstation.memory),
-                freeSpace: Number(workstation.freeSpace),
+                freeSpace: Number(workstation.free_space),
                 touched: true
             }
         })
@@ -173,71 +171,154 @@ validateWorkstation(){
 handleSubmit(event, callback){
     event.preventDefault();
 
-    let id
-    let method
-    if(this.props.header === 'Add User'){
-        id = uuidv4()
-        method = 'POST'
-    }else if(this.props.header === 'Edit User'){
-        id = this.state.id
-        method = 'UPDATE'
-    }
-   
-    const firstName = this.state.firstName.value
-    const lastName = this.state.lastName.value
+    const first_name = this.state.firstName.value
+    const last_name = this.state.lastName.value
     const email = this.state.email.value
-    const tradeId = Number(this.state.tradeId.value)
-    const roleId = Number(this.state.roleId.value)
-    const workstationId = Number(this.state.workstation.id)
+    const trade_id = Number(this.state.tradeId.value)
+    const role_id = Number(this.state.roleId.value)
+    const workstation_id = Number(this.state.workstation.id)
 
-    const user = { id, firstName, lastName, email, tradeId, roleId, workstationId}
-    // const options = {
-    //   method: 'POST',
-    //   body: JSON.stringify(note),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${config.API_KEY}`
-    //   }
-    // };
+    if(this.props.header === 'Add User'){
 
-    // fetch(`${config.API_ENDPOINT}api/notes`, options)
-    // .then(response => {
-    //     if(!response.ok){
-    //       throw new Error('Something went wrong');
-    //     }
-    //     return response;
-    //   })
-    //   .then(response => response.json())
-      // .then(data => {
-        callback(user);
-        this.setState(
-            {
-                id:'',
-                folderId:{value:''},
-                lastName:{value:''},
-                email:{value:''},
-                tradeId:{value:''},
-                roleId:{value:''},
-                workstation:{
-                  id:'',
-                  hostName: '',
-                  os: '',
-                  version: '',
-                  memory: '',
-                  freeSpace: '',
-                },
+        const method = 'POST'
+        const user = { first_name, last_name, email, trade_id, role_id, workstation_id}
+        const path = `${config.API_ENDPOINT}api/users`
+
+        const options = {
+            method: method,
+            body: JSON.stringify(user),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${config.API_KEY}`
             }
-        );
-        this.props.history.push(`/dashboard`);
-      //   }
-      // )
-      // .catch(err => this.displayError(err));
-    
+          };
+      
+          fetch(path, options)
+          .then(response => {
+              if(!response.ok){
+                throw new Error('Something went wrong');
+              }
+              return response;
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data)
+              callback(data);
+              this.setState(
+                  {
+                      id:'',
+                      folderId:{value:''},
+                      lastName:{value:''},
+                      email:{value:''},
+                      tradeId:{value:''},
+                      roleId:{value:''},
+                      workstation:{
+                        id:'',
+                        hostName: '',
+                        os: '',
+                        version: '',
+                        memory: '',
+                        freeSpace: '',
+                      },
+                  }
+              );
+              this.props.history.push(`/dashboard`);
+              }
+            )
+            .catch(err => this.displayError(err));
+
+
+    }else if(this.props.header === 'Edit User'){
+
+        const id = Number(this.state.id)
+        const method = 'PATCH'
+        const user = { id, first_name, last_name, email, trade_id, role_id, workstation_id}
+        const path = `${config.API_ENDPOINT}api/users/${id}`
+
+
+        const options = {
+            method: method,
+            body: JSON.stringify(user),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${config.API_KEY}`
+            }
+          };
+      
+        fetch(path, options)
+        .then(response => {
+            if(!response.ok){
+                throw new Error('Something went wrong');
+            }
+            callback(user);
+            this.setState(
+                {
+                    id:'',
+                    folderId:{value:''},
+                    lastName:{value:''},
+                    email:{value:''},
+                    tradeId:{value:''},
+                    roleId:{value:''},
+                    workstation:{
+                    id:'',
+                    hostName: '',
+                    os: '',
+                    version: '',
+                    memory: '',
+                    freeSpace: '',
+                    },
+                }
+            );
+            this.props.history.push(`/dashboard`);
+            }
+        )
+        .catch(err => this.displayError(err));
+    }
   }
 
 handleDelete(id, callback){
-    callback(id);
-    this.props.history.push(`/dashboard`);
+
+        const method = 'DELETE'
+        const path = `${config.API_ENDPOINT}api/users/${id}`
+
+        const options = {
+            method: method,
+            //body: JSON.stringify(id),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${config.API_KEY}`
+            }
+          };
+      
+          fetch(path, options)
+          .then(response => {
+            if(!response.ok){
+                throw new Error('Something went wrong');
+            }
+            callback(id);
+            this.setState(
+                {
+                    id:'',
+                    folderId:{value:''},
+                    lastName:{value:''},
+                    email:{value:''},
+                    tradeId:{value:''},
+                    roleId:{value:''},
+                    workstation:{
+                    id:'',
+                    hostName: '',
+                    os: '',
+                    version: '',
+                    memory: '',
+                    freeSpace: '',
+                    },
+                }
+            );
+            this.props.history.push(`/dashboard`);
+            }
+        )
+        .catch(err => this.displayError(err));
+
 }
 
 render(){
@@ -257,7 +338,7 @@ render(){
     });
     const workstations = this.context.workstations.map((workstation) => {
         const workstationId = workstation.id
-        const hostName = workstation.hostName
+        const hostName = workstation.host_name
         return(
             <option key={`${hostName}-${workstationId}`} value={`${workstationId}`}>{hostName}</option>
         );
@@ -372,7 +453,7 @@ render(){
 
                     {this.props.header === 'Edit User' ?
                     <button type='button'
-                        onClick={() => this.handleDelete(this.state.id, context.deleteUser)}
+                        onClick={() => this.handleDelete(Number(this.state.id), context.deleteUser)}
                         >Delete
                     </button>
                     : '' 

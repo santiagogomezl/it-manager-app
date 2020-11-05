@@ -5,8 +5,8 @@ import './UserSummary.css'
 class UserSummary extends Component{
 
   render(){
-    const { id, firstName, lastName, email, trade, role } = this.props
-    const { os, version, memory, freeSpace } = this.props.workstation
+    const { id, first_name, last_name, email, trade, role } = this.props
+    const { os, version, memory, free_space } = this.props.workstation
     return(
       <div className='UserSummary'>
           <div className='user-details'>
@@ -22,15 +22,15 @@ class UserSummary extends Component{
                     <li>Free Space:</li>
                 </ul>
                 <ul className='user-detail-data'>
-                    <li>{firstName}</li>
-                    <li>{lastName}</li>
+                    <li>{first_name}</li>
+                    <li>{last_name}</li>
                     <li>{email}</li>
                     <li>{trade}</li>
                     <li>{role}</li>
                     <li>{os}</li>
                     <li>{version}</li>
                     <li>{`${memory}GB`}</li>
-                    <li>{`${freeSpace}GB`}</li>
+                    <li>{`${free_space}GB`}</li>
                 </ul>
             </div>
                 <Link to={`/user/${id}`}><button>View</button></Link>

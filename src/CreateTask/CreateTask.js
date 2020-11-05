@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ITManagerContext from '../ITManagerContext'
 import './CreateTask.css'
-import { v4 as uuidv4 } from 'uuid';
+import config from '../config'
 
 class CreateTask extends Component{
 
@@ -86,36 +86,34 @@ class CreateTask extends Component{
 
   handleSubmit(event, callback){
     event.preventDefault();
-    //const modified = new Date().toISOString();
 
-    const id = uuidv4()
-    const userId = this.state.userId.value
-    const taskDetails = this.state.taskDetails.value
-    const statusCode = 1
-    const dueDate = this.state.dueDate.value
+    const user_id = this.state.userId.value
+    const task_details = this.state.taskDetails.value
+    const status_code = 1
+    const due_date = this.state.dueDate.value
 
     // const workstationId = Number(this.state.workstation.id)
 
-    const task = { id, userId, taskDetails, statusCode, dueDate}
-    // const options = {
-    //   method: 'POST',
-    //   body: JSON.stringify(note),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${config.API_KEY}`
-    //   }
-    // };
+    const task = { user_id, task_details, status_code, due_date}
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(task),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
+      }
+    };
 
-    // fetch(`${config.API_ENDPOINT}api/notes`, options)
-    // .then(response => {
-    //     if(!response.ok){
-    //       throw new Error('Something went wrong');
-    //     }
-    //     return response;
-    //   })
-    //   .then(response => response.json())
-      // .then(data => {
-        callback(task);
+    fetch(`${config.API_ENDPOINT}api/tasks`, options)
+    .then(response => {
+        if(!response.ok){
+          throw new Error('Something went wrong');
+        }
+        return response;
+      })
+      .then(response => response.json())
+      .then(data => {
+        callback(data);
         this.setState(
             {
                 userId:{value:''},
@@ -123,26 +121,26 @@ class CreateTask extends Component{
                 dueDate:{value:''},
             }
         );
-        this.props.history.push(`/user/${userId}`);
-      //   }
-      // )
-      // .catch(err => this.displayError(err));
+        this.props.history.push(`/user/${user_id}`);
+        }
+      )
+      .catch(err => this.displayError(err));
   }
 
   render(){
 
     const users = this.context.users.map((user) => {
       const userId = user.id
-      const userName = `${user.firstName} ${user.lastName}`
+      const userName = `${user.first_name} ${user.last_name}`
       return(
-          <option key={`${user.firstName}-${user.lastName}-${userId}`} value={`${userId}`}>{userName}</option>
+          <option key={`${user.first_name}-${user.last_name}-${userId}`} value={`${userId}`}>{userName}</option>
       )
     })
 
     const date = new Date()
-    const month = date.getUTCMonth() + 1
-    const day = date.getUTCDate()
-    const year = date.getUTCFullYear()
+    const month = ("0" + (date.getMonth() + 1)).slice(-2)
+    const day = ("0" + date.getDate()).slice(-2)
+    const year = date.getFullYear()
     const minDate = `${year}-${month}-${day}`
 
     return(
@@ -177,11 +175,11 @@ class CreateTask extends Component{
                     <div className={`form-fieldset
                         ${this.state.dueDate.touched && this.validateDueDate() ? 'form-error' : ''}`}
                     >
-                        <label htmlFor='dueDaue'>Choose an user:</label>
+                        <label htmlFor='dueDate'>Choose an user:</label>
                         <input 
                             type='date'
-                            name='dueDaue' 
-                            id='dueDaue'
+                            name='dueDate' 
+                            id='dueDate'
                             min={minDate}
                             onChange={e => this.updateDueDate(e.target.value)}
                             value={this.state.dueDate.value}/> 

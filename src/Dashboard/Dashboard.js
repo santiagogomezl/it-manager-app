@@ -6,32 +6,51 @@ import { Link } from 'react-router-dom';
 
 class Dashboard extends Component{
 
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+      trades: [],
+      roles:[],
+      workstations: [],
+      tasks: [],
+    }
+  }
+
   static contextType = ITManagerContext;
 
-  render(){
-    let content = []
+  componentDidMount(){
+      this.setState({
+        users: this.context.users,
+        trades: this.context.trades,
+        roles:this.context.roles,
+        workstations: this.context.workstations,
+        tasks: this.context.tasks
+      })
+  }
 
-    content = [content, this.context.users.map((user) => {
-      const key = `user-${user.id}`
-      const trade = this.context.trades.find( trade => trade.id === user.tradeId)
-      const role = this.context.roles.find( role => role.id === user.roleId)
-      const workstation = this.context.workstations.find( workstation => workstation.id === user.workstationId)
-      return(<UserSummary key={key} {...user} trade={trade.name} role={role.title} workstation={workstation}/>)
-    })
-  ]
+  render(){
+
+    let content = []
+    
+    if(this.context.users.length !== 0){
+      content = [content, this.state.users.map((user) => {
+        const key = `user-${user.id}`
+        const trade = this.state.trades.find( trade => trade.id === user.trade_id)
+        const role = this.state.roles.find( role => role.id === user.role_id)
+        const workstation = this.state.workstations.find( workstation => workstation.id === user.workstation_id)
+        return(<UserSummary key={key} {...user} trade={trade.name} role={role.title} workstation={workstation}/>)
+        })
+      ]
+    }else{
+      this.props.history.push(`/`);
+    }
 
     return(
       <div className='Dashboard'>
         <div className='dashboard-header'>
             <h1>IT Manager</h1>
-            <div className='dashboard-filter'>
-                <form>
-                Filter Results Form
-                </form>
-            </div>
-            <div className='dashboard-add-button'>
-              <Link to={'/add-user'}><button>Add User</button></Link>
-            </div>
         </div>
         <div className='dashboard-body'>
           {content}
