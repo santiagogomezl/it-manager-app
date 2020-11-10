@@ -352,87 +352,66 @@ render(){
                 <form className='user-form' onSubmit={e => 
                     this.handleSubmit(e, this.props.header === 'Add User' ? context.addUser : context.editUser)
                 }>
-                    <div className={`form-fieldset 
-                        ${this.state.firstName.touched && this.validateFirstName() ? 'form-error' : ''}`}
-                    >
+            
                         <label htmlFor='firstName'>First Name</label>
                         <input  
                         id='firstName'
                         value={this.state.firstName.value}
-                        onChange={e => this.updateFirstName(e.target.value)}/>
-                    </div>
-                    <div className={`form-fieldset 
-                        ${this.state.lastName.touched && this.validateLastName() ? 'form-error' : ''}`}
-                    >
+                        onChange={e => this.updateFirstName(e.target.value)}
+                        className={`${this.state.firstName.touched && this.validateFirstName() ? 'form-error' : ''}`}/>
+                    
                         <label htmlFor='lastName'>Last Name</label>
                         <input  
                         id='lastName'
                         value={this.state.lastName.value}
-                        onChange={e => this.updateLastName(e.target.value)}/>
-                    </div>
-                    <div className={`form-fieldset 
-                        ${this.state.email.touched && this.validateEmail() ? 'form-error' : ''}`}
-                    >
-                        <label htmlFor='email'>email</label>
+                        onChange={e => this.updateLastName(e.target.value)}
+                        className={`${this.state.lastName.touched && this.validateLastName() ? 'form-error' : ''}`}/>
+                    
+                        <label htmlFor='email'>Email</label>
                         <input  
                         id='email'
                         value={this.state.email.value}
-                        onChange={e => this.updateEmail(e.target.value)}/>
-                    </div>
-                    <div className={`form-fieldset 
-                        ${this.state.tradeId.touched && this.validateTrade() ? 'form-error' : ''}`}
-                    >
+                        onChange={e => this.updateEmail(e.target.value)}
+                        className={`${this.state.email.touched && this.validateEmail() ? 'form-error' : ''}`}/>
+                    
                         <label htmlFor='trade'>Choose a trade:</label>
                         <select 
                             name='trade' 
                             id='trade'
                             onChange={e => this.updateTrade(e.target.value)}
-                            value={this.state.tradeId.value}>
+                            value={this.state.tradeId.value}
+                            className={`${this.state.tradeId.touched && this.validateTrade() ? 'form-error' : ''}`}>
                             <option key={'select-trade'} id='select-trade'>Select Trade...</option>
                             {trades}
                         </select>
-                    </div>
-                    <div className={`form-fieldset 
-                        ${this.state.roleId.touched && this.validateRole() ? 'form-error' : ''}`}
-                    >
+
                         <label htmlFor='role'>Choose a role:</label>
                         <select 
                             name='role' 
                             id='role'
                             onChange={e => this.updateRole(e.target.value)}
-                            value={this.state.roleId.value}>
+                            value={this.state.roleId.value}
+                            className={`${this.state.roleId.touched && this.validateRole() ? 'form-error' : ''}`}>
                             <option key={'select-role'} id='select-role'>Select Role...</option>
                             {roles}
                         </select>  
-                    </div> 
-                    <div className={`form-fieldset 
-                        ${this.state.workstation.touched && this.validateWorkstation() ? 'form-error' : ''}`}
-                    >
+
                         <label htmlFor='workstation'>Choose a workstation:</label>
                         <select 
                             name='workstation' 
                             id='workstation'
                             onChange={e => this.updateWorkstation(e.target.value)}
-                            value={this.state.workstation.id}>
+                            value={this.state.workstation.id}
+                            className={`${this.state.workstation.touched && this.validateWorkstation() ? 'form-error' : ''}`}>
                             <option key={'select-workstation'} id='select-workstation'>Select Workstation...</option>
                             {workstations}
                         </select> 
-                    </div>
-                    <div className='usersum-details'>
-                        <ul className='usersum-detail-type'>
-                            <li>OS:</li>
-                            <li>Version:</li>
-                            <li>Memory:</li>
-                            <li>Free Space:</li>
+                        <ul className='workstation-details'>
+                            <li><strong>OS: </strong>{this.state.workstation.os}</li>
+                            <li><strong>Version: </strong>{this.state.workstation.version}</li>
+                            <li><strong>Memory: </strong>{this.state.workstation.memory ? `${this.state.workstation.memory}GB`: ''}</li>
+                            <li><strong>Free Space: </strong>{this.state.workstation.freeSpace ? `${this.state.workstation.freeSpace}GB`: ''}</li>
                         </ul>
-                        <ul className='usersum-detail-data'>
-                            <li>{this.state.workstation.os}</li>
-                            <li>{this.state.workstation.version}</li>
-                            <li>{`${this.state.workstation.memory}GB`}</li>
-                            <li>{`${this.state.workstation.freeSpace}GB`}</li>
-                        </ul>
-                    </div>
-
                     <button 
                         type='submit'
                         disabled={

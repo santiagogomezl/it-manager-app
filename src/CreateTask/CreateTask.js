@@ -149,32 +149,26 @@ class CreateTask extends Component{
             <div className='CreateTask'>
                 <h1>Create Task</h1>
                 <form className='task-form' onSubmit={e => this.handleSubmit(e, context.createTask)}>
-                    <div className={`form-fieldset
-                        ${this.state.userId.touched && this.validateUserId() ? 'form-error' : ''}`}
-                    >
+                    
                         <label htmlFor='userId'>Choose an user:</label>
                         <select 
                             name='userId' 
                             id='userId'
                             onChange={e => this.updateUserId(e.target.value)}
-                            value={this.state.userId.value}>
+                            value={this.state.userId.value}
+                            className={`${this.state.userId.touched && this.validateUserId() ? 'form-error' : ''}`}>
                             <option key={'select-userid'} id='select-userid'>Select User...</option>
                             {users}
                         </select> 
-                    </div>
-                    <div className={`form-fieldset 
-                        ${this.state.taskDetails.touched && this.validateTaskDetails() ? 'form-error' : ''}`}
-                    >
+                    
                         <label htmlFor='taskDetails'>Task Details</label>
                         <textarea  
                         id='taskDetails'
                         value={this.state.taskDetails.value}
-                        onChange={e => this.updateTaskDetails(e.target.value)}>
+                        onChange={e => this.updateTaskDetails(e.target.value)}
+                        className={`${this.state.taskDetails.touched && this.validateTaskDetails() ? 'form-error' : ''}`}>
                         </textarea>
-                    </div>
-                    <div className={`form-fieldset
-                        ${this.state.dueDate.touched && this.validateDueDate() ? 'form-error' : ''}`}
-                    >
+                    
                         <label htmlFor='dueDate'>Choose an user:</label>
                         <input 
                             type='date'
@@ -182,8 +176,9 @@ class CreateTask extends Component{
                             id='dueDate'
                             min={minDate}
                             onChange={e => this.updateDueDate(e.target.value)}
-                            value={this.state.dueDate.value}/> 
-                    </div>        
+                            value={this.state.dueDate.value}
+                            className={`${this.state.dueDate.touched && this.validateDueDate() ? 'form-error' : ''}`}
+                            /> 
                     <button 
                         type='submit'
                         disabled={

@@ -60,7 +60,7 @@ class User extends Component{
       const hotfixDates = this.state.workstation.hotfixDate
       hotFixes = hotfixInfos.map((hotfixInfo,i) => {
         return(
-        <li key={`hotfix-${i}`}>{`${hotfixInfo} compleated on: ${hotfixDates[i].substring(0, 10)}`}</li>
+        <li key={`hotfix-${i}`}>{`${hotfixInfo} completed on: ${hotfixDates[i].substring(0, 10)}`}</li>
         )
       })
     }
@@ -70,26 +70,17 @@ class User extends Component{
           <h1>{`${this.state.firstName} ${this.state.lastName}`}</h1>
           <section className='user-info'>
               <h2>User Info</h2>
-              <div className='user-details'>
-                <ul className='user-detail-type'>
-                    <li>First Name:</li>
-                    <li>Last Name:</li>
-                    <li>Email:</li>
-                    <li>Trade:</li>
-                    <li>Role</li>
-                </ul>
-                <ul className='user-detail-data'>
-                    <li>{this.state.firstName}</li>
-                    <li>{this.state.lastName}</li>
-                    <li>{this.state.email}</li>
-                    <li>{this.state.trade}</li>
-                    <li>{this.state.role}</li>
-                </ul>
-            </div>
+              <ul>
+                  <li><strong>First Name: </strong>{this.state.firstName}</li>
+                  <li><strong>Last Name: </strong>{this.state.lastName}</li>
+                  <li><strong>Email: </strong>{this.state.email}</li>
+                  <li><strong>Trade: </strong>{this.state.trade}</li>
+                  <li><strong>Role: </strong>{this.state.role}</li>
+              </ul>
           </section>
           
           {this.state.tasks.length !== 0 ?
-          <section className='tasks-info'>
+          <section className='user-tasks'>
               <h2>Tasks</h2>
               <Tasks tasks={this.state.tasks} history={this.props.history}/> 
           </section>

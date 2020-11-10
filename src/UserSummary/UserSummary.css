@@ -1,22 +1,60 @@
 .UserSummary{
-    margin-top:20px;
-    margin-bottom: 20px;
-    
+    padding:20px;
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-.user-details{
+.usersum-details{
     display: flex;
-    justify-content: center;
 }
 
-.user-details ul{
-    list-style-type: none;
+.usersum-details ul{
+    padding: 0;
+    margin-right: 10px;
 }
 
-.user-detail-type li{ 
-    text-align: right;
-}
-
-.user-detail-data li{ 
+.usersum-details li{
     text-align: left;
 }
+
+.hasTasks{
+    background-color: rgba(0, 159, 217, 0.3);
+}
+
+@media screen and (min-device-width: 768px){
+
+    .usersum-details ul:nth-child(1){
+        display: none;
+    }
+    
+    .usersum-details ul{
+        width: 100%;
+        padding-left: 100px;
+        margin-right: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .usersum-details li,
+    .user-details-header li{
+        text-align: left;
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 10px;
+    }
+
+    .usersum-details li.email,
+    .user-details-header li.email{
+        width: 200px;
+    }
+
+    .view-user-button{
+        position: absolute;
+        left:20px;
+        top: 27px;
+    }
+
+    
+ }

@@ -83,8 +83,9 @@ class Tasks extends Component{
             
             return(
                 <div className='form-fieldset user-task' key={`task-${task.id}`}>
-                    <span>{`${task.task_details} due on ${task.due_date.substring(0, 10)}. `}</span>
-                    <label htmlFor={`task-${task.id}`}>Status: </label>
+                    <label htmlFor={`task-${task.id}`}>
+                        <span>{`${task.task_details} due on ${task.due_date.substring(0, 10)} `}</span>
+                    </label>
                     <select 
                         name={`task-${task.id}`} 
                         id={`task-${task.id}`}
@@ -93,7 +94,7 @@ class Tasks extends Component{
                         >
                         <option value={1}>New</option>
                         <option value={2}>In progress</option>
-                        <option value={3}>Compleated</option>
+                        <option value={3}>Completed</option>
                     </select>
                 </div>
             )

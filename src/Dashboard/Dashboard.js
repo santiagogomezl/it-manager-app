@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import './Dashboard.css'
 import ITManagerContext from '../ITManagerContext'
 import UserSummary from '../UserSummary/UserSummary'
-import { Link } from 'react-router-dom';
 
 class Dashboard extends Component{
 
@@ -50,7 +49,18 @@ class Dashboard extends Component{
     return(
       <div className='Dashboard'>
         <div className='dashboard-header'>
-            <h1>IT Manager</h1>
+            <h1>Dashboard</h1>
+            <ul className='user-details-header'>
+                    <li>First Name</li>
+                    <li>Last Name</li>
+                    <li className='email'>Email</li>
+                    <li>Trade</li>
+                    <li>Role</li>
+                    <li>OS</li>
+                    <li>Version</li>
+                    <li>Memory</li>
+                    <li>Free Space</li>
+            </ul>
         </div>
         <div className='dashboard-body'>
           {content}

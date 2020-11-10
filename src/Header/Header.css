@@ -1,24 +1,124 @@
 .Header{
     width: 100%;
-    height: 40px;
-    background-color: grey;
-    padding: 10px;
+    min-width: 400px;
+    min-height: 40px;
+    background-color: white;
+    padding: 10px 0;
     position: fixed;
     top: 0;
     z-index: 999;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 0 1px  #e0e0e0;
+}
+
+.Header a,
+.Header a:active{
+    text-decoration: none;
+    color: black
 }
 
 .header-navbar{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    position: relative;
+}
+
+.header-branding{
+    padding: 10px 0;
+    font-weight: 700;
 }
 
 .header-menu{
-    display: flex;
+    display: none;
+    height: auto;
+}
+
+.display-menu{
+    display: block;
+    transition: all 0.5s ease;
+}
+
+.header-menu ul{
     list-style-type: none;
     margin: 0;
+    padding: 0;
 }
 
 .header-menu li{
-    margin-left:10px
+    padding: 10px 0;
 }
+
+.header-toggle-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 28px;
+    width: 28px;
+    padding: 4px;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    background-color: #009fd9;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.menu-dash{
+    height: 4px;
+    min-width: 100%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.clicked-toggle{
+    background-color: white;
+    border: 1px solid #e0e0e0 ;
+}
+
+.clicked-toggle .menu-dash{
+    background-color: #009fd9;
+}
+
+.tasks-marker{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 20px;
+    background-color: #009fd9;
+    color: white;
+    font-weight: 700;
+    display: inline-block;
+}
+
+@media screen and (min-device-width: 768px){
+    .Header{
+       padding: 10px 20px; 
+    }
+
+    .Header a:hover{
+        color: #009fd9;
+    }
+
+    .header-navbar{
+        flex-direction: row;
+    }
+
+    .header-toggle-menu{
+        display: none;
+    }
+
+    .header-menu{
+        display: inline-block;
+    }
+
+    .header-menu ul{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .header-menu li{
+        margin-left: 20px;
+    }
+ }

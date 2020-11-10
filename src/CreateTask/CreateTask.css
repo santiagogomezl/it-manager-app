@@ -1,0 +1,14 @@
+.task-form textarea{
+    min-height: 100px;
+    text-align: left;
+}
+
+@media screen and (min-device-width: 768px){
+
+    .CreateTask{
+        max-width: 600px;
+        margin: 0 auto;
+    }
+   
+    
+ }

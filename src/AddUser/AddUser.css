@@ -1,12 +1,10 @@
-.AddUser{
-    min-height: 400px;
-}
 
-.add-user-form{
+@media screen and (min-device-width: 768px){
 
-}
-
-.add-user-form input{
-    display: block;
-    margin:auto;
-}
+    .AddUser{
+        max-width: 600px;
+        margin: 0 auto;
+    }
+   
+    
+ }

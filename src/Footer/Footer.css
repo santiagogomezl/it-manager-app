@@ -1,5 +1,18 @@
 .Footer{
-    height: auto;
-    padding: 10px;
-    background-color: grey;
+    width: 100%;
+    min-width: 400px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 4px solid #009fd9;
+    background-color: #e0e0e0;
+}
+
+.footer-branding p{
+    width: 80%;
+    margin: 10px auto;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.8em;
 }

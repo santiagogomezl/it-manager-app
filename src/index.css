@@ -1,7 +1,81 @@
 *{
   box-sizing: border-box;
   text-align: center;
+  font-family: 'Lato', sans-serif;
 }
+
+h1,h2,h3{
+  font-weight: 700;
+}
+
+h1{
+  font-size: 1.8em;
+}
+
+h2{
+  font-size: 1.5em;
+}
+
+button{
+  width: 100%;
+  background-color: #009fd9;
+  margin-right: 10px;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 700;
+  border: 1px solid #cdcbcb;
+  cursor: pointer; 
+}
+
+button:hover:enabled{
+  background-color: #0491c4;
+  color: white
+}
+
+button:disabled{
+  border: 1px solid #999999;
+  background-color: #e0e0e0;;
+  color: #666666;
+}
+
+.form-error{
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+form label,
+form input,
+form select,
+form button,
+form textarea{
+  width: 100%;
+  min-width: 300px;
+  margin: 8px auto;
+  display: block;
+}
+
+form label,
+form input{
+  text-align: left;
+}
+
+form input,
+form select{
+  padding: 5px;
+}
+
+.form-error-msg{
+  margin: 20px auto;
+  font-weight: 700;
+}
+
+li{
+  list-style-type: none;
+}
+
+a:link{
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,6 +90,3 @@ code {
     monospace;
 }
 
-li{
-  list-style-type: none;
-}
