@@ -6,11 +6,11 @@
     flex-direction: column;
     justify-content: center;
     border-top: 4px solid #009fd9;
-    background-color: #e0e0e0;
+    
 }
 
 .footer-branding p{
-    width: 80%;
+    width: 90%;
     margin: 10px auto;
     text-align: left;
     font-weight: 700;

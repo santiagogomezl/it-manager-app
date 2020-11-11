@@ -1,3 +1,7 @@
+.CreateTask{
+    padding-bottom: 40px;
+}
+
 .task-form textarea{
     min-height: 100px;
     text-align: left;

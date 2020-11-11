@@ -1,7 +1,128 @@
 .landing-hero{
-    min-height: 200px;
+    height: 300px;
+    background-image: url('/img/hero.png');
+    background-size: cover;
+    background-position: right;
 }
 
-.landing-section{
-    min-height: 200px;
+.hero{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.hero h1{
+    width: auto;
+    padding: 10px;
+    text-align: left;
+    color: white;
+    background-color: #009fd9;
+}
+
+.hero p{
+    color: white;
+    font-weight: 700;
+}
+
+.fa-icon{
+    color: #009fd9; 
+    font-size: 4em;
+}
+
+.landing-features ul{
+    margin: 40px auto;
+    padding: 0;
+}
+
+.landing-features li{
+    margin: 40px;
+    text-align: center;
+}
+
+.landing-features p{
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+.landing-app-layout img{
+    width: 100%;
+}
+
+.landing-app-layout p{
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: 300;
+}
+
+.landing-app-layout span{
+    color: #009fd9;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+@media screen and (min-device-width: 768px){
+
+    .Landing{
+        width: 90%;
+        max-width: 1280px;
+        height: auto;
+        margin: 0 auto;
+        padding-bottom: 100px;
+        border-left: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+        box-shadow: 0 0 10px  #cacaca;
+    }
+
+    .landing-hero{
+        height: 500px;
+    }
+
+    .landing-hero,
+    .landing-features,
+    .landing-app-layout{
+        margin-bottom: 100px;
+    }
+
+    .hero h1{
+        width: 80%;
+        max-width: 645px;
+        font-size: 2.4em;
+    }
+    
+    .landing-features ul{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .landing-features li{
+        width: auto;
+        margin: 20px;
+    }
+
+    .landing-app-layout{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .landing-app-layout img{
+        width: 60%;
+    }
+
+    .landing-app-layout p{
+        padding-right: 40px;
+        align-self: center;
+        font-size: 1.6em;
+        text-align: left;
+    }
+
+    .landing-app-layout span{
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+ }
+
+

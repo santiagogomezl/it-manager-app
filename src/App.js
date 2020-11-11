@@ -8,6 +8,7 @@ import EditUser from './EditUser/EditUser'
 import AddUser from './AddUser/AddUser'
 import CreateTask from './CreateTask/CreateTask'
 import Footer from './Footer/Footer'
+import NotFound from './NotFound/NotFound'
 import './App.css'
 import ITManagerContext from './ITManagerContext'
 import { v4 as uuidv4 } from 'uuid'
@@ -24,7 +25,7 @@ class App extends Component{
     }
 
   displayError(err){
-    alert(err);
+    console.log(err);
   }
 
   componentDidMount(){
@@ -132,6 +133,7 @@ class App extends Component{
       })
     })
     .catch(err => this.displayError(err));
+
   }
 
   addUser = (newUser) => {
@@ -263,7 +265,7 @@ class App extends Component{
 
               <Route path='/create-task' component={CreateTask}/>
 
-              {/* <Route path={'*'} component={NotFound} /> */}
+              <Route path={'*'} component={NotFound} />
             </Switch>
           </main>
           <Footer/>

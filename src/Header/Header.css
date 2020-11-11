@@ -1,20 +1,15 @@
 .Header{
     width: 100%;
     min-width: 400px;
-    min-height: 40px;
+    height: auto;
+    min-height: 60px;
     background-color: white;
-    padding: 10px 0;
+    padding-top: 10px;
     position: fixed;
     top: 0;
     z-index: 999;
+    box-shadow: 0 0 10px  #cacaca;
     border-bottom: 1px solid #e0e0e0;
-    box-shadow: 0 0 1px  #e0e0e0;
-}
-
-.Header a,
-.Header a:active{
-    text-decoration: none;
-    color: black
 }
 
 .header-navbar{
@@ -22,10 +17,12 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    text-align: center;
 }
 
 .header-branding{
     padding: 10px 0;
+    font-size: 1.2em;
     font-weight: 700;
 }
 
@@ -46,7 +43,12 @@
 }
 
 .header-menu li{
-    padding: 10px 0;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-menu li:last-child{
+    border-bottom: none;
 }
 
 .header-toggle-menu{
@@ -89,16 +91,13 @@
     background-color: #009fd9;
     color: white;
     font-weight: 700;
+    text-align: center;
     display: inline-block;
 }
 
 @media screen and (min-device-width: 768px){
     .Header{
        padding: 10px 20px; 
-    }
-
-    .Header a:hover{
-        color: #009fd9;
     }
 
     .header-navbar{
@@ -120,5 +119,6 @@
 
     .header-menu li{
         margin-left: 20px;
+        border-bottom: none;
     }
  }

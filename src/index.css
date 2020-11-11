@@ -1,15 +1,18 @@
 *{
   box-sizing: border-box;
-  text-align: center;
   font-family: 'Lato', sans-serif;
 }
 
-h1,h2,h3{
-  font-weight: 700;
+
+
+h1,h2,h3,p,a,form{
+  color: #282828
+
 }
 
 h1{
   font-size: 1.8em;
+  text-align: center;
 }
 
 h2{
@@ -59,7 +62,8 @@ form input{
 }
 
 form input,
-form select{
+form select,
+form textarea{
   padding: 5px;
 }
 
@@ -74,6 +78,10 @@ li{
 
 a:link{
   text-decoration: none;
+}
+
+a:hover{
+  color: #009fd9;
 }
 
 body {
