@@ -4,7 +4,7 @@
 }
 
 
-@media screen and (min-device-width: 768px){
+@media screen and (min-device-width: 1023px){
 
     .user-details-header{
         margin-bottom: 0;
@@ -13,6 +13,16 @@
         display: flex;
         font-weight: 700;
         border-bottom: 1px solid #e0e0e0;
+    }
+
+    .user-details-header li{
+        text-align: left;
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .user-details-header li.email{
+        width: 200px;
     }
     
  }

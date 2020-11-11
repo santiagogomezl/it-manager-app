@@ -19,28 +19,28 @@ class Landing extends Component{
                 <li>
                   <FontAwesomeIcon className={'fa-icon'} icon={faUsersCog}/>
                   <p>
-                    <strong>Add and manage users</strong><br/>
+                    <span>Add and manage users</span><br/>
                     Onboard new users and allocate IT resources such as computers, laptops and other devices
                   </p>
                 </li>
                 <li>
                   <FontAwesomeIcon className={'fa-icon'} icon={faLaptop}/>
                   <p>
-                    <strong>Allocate IT resources</strong><br/>
-                     Asign workstations to users and maximize their usage. This will allow you to manage your budget properly  
+                    <span>Allocate IT resources</span><br/>
+                     Assign workstations to users and maximize their usage. This will allow you to manage your budget properly  
                   </p>
                 </li>
                 <li>
                   <FontAwesomeIcon className={'fa-icon'} icon={faTasks} />
                   <p>
-                    <strong>Schedule tasks</strong><br/>
-                    Create task to make sure all current requirements are maintained. Schedule security and software tasks
+                    <span>Schedule tasks</span><br/>
+                    Create tasks to make sure all current requirements are maintained. Schedule security and software tasks
                   </p>
                 </li>
                 <li>
                   <FontAwesomeIcon className={'fa-icon'} icon={faWrench} />
                   <p>
-                    <strong>Keep workstations up to date</strong><br/>
+                    <span>Keep workstations up to date</span><br/>
                     Perform periodic updates by keeping track of hardware and software for all workstations
                   </p>
                 </li>
@@ -48,10 +48,12 @@ class Landing extends Component{
             
           </div>
           <div className='landing-app-layout'>
-            <img src={'./img/app-layout.png'} />
+            <div className={'layout-image'}>
+              <img src={'./img/app-layout.png'} alt={'App Layout'}/>
+            </div>
             <p>
                 <span>Cloud Based Management App</span><br/>
-                Easily access your resources<br/> anywhere whether on your<br/> mobile device or desktop
+                Easily access your resources<br/> anywhere whether on your<br/> desktop or mobile device
             </p>
           </div>
          
