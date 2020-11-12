@@ -2,13 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # IT Manager App
 
-The IT Manager App allows you to manage your company's users and workstations. Onboard users, create tasks, perform periodic updates and allocate resources. Keep all your users data and tasks history in a cloud base app. No more spreadsheets.  
+The IT Manager App allows you to manage your company's users and workstations, onboard users, create tasks, perform periodic updates and allocate resources. Keep all your user data and task history in a cloud based app. No more spreadsheets.  
 
 ## Live Site
 
 https://it-manager-app.vercel.app/
-
-In the project directory, you can run:
 
 ## Screenshots
 
