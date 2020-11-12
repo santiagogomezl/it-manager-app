@@ -9,7 +9,7 @@ class NotFound extends Component{
     return(
       <div className='NotFound'>
         <div>
-          <img src='img/notfound-image.png'></img>
+          <img src='img/notfound-image.png' alt={'Something went wrong. Page not found'}></img>
           <h1>Oh no! Something went wrong</h1>
           <p>Go back to the <Link to='/'>landing page</Link></p>
         </div>

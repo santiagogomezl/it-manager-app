@@ -27,7 +27,10 @@ class UserSummary extends Component{
     let free_space
     const { id, first_name, last_name, email, trade, role } = this.props
     if(this.props.workstation ){
-       this.props.workstation = { os, version, memory, free_space }
+      os = this.props.workstation.os
+      version = this.props.workstation.version
+      memory = this.props.workstation.memory
+      free_space  = this.props.workstation.free_space
     }
     return(
       <div className={`UserSummary ${this.state.tasks.length !== 0 ? 'hasTasks' : ''}`}>

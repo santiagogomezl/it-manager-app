@@ -70,7 +70,6 @@ class Tasks extends Component{
                 disabled: true,
             }
         );
-        //this.props.history.push(`/user/${this.state.id}`);
 
       }
     

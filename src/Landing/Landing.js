@@ -14,7 +14,6 @@ class Landing extends Component{
             </div>
           </div>
           <div className='landing-features'>
-            {/* <h2>Features</h2> */}
               <ul>
                 <li>
                   <FontAwesomeIcon className={'fa-icon'} icon={faUsersCog}/>

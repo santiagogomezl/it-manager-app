@@ -202,7 +202,6 @@ handleSubmit(event, callback){
             })
             .then(response => response.json())
             .then(data => {
-              console.log(data)
               callback(data);
               this.setState(
                   {
@@ -283,7 +282,6 @@ handleDelete(id, callback){
 
         const options = {
             method: method,
-            //body: JSON.stringify(id),
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${config.API_KEY}`

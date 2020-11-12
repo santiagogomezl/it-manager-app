@@ -176,7 +176,7 @@ class App extends Component{
     let tasks = this.state.tasks
     let workstations = this.state.workstations
     let updatedWorkstation
-    updatedTasks.map(updatedTask => {
+    updatedTasks.forEach(updatedTask => {
       const taskIndex = tasks.indexOf(tasks.find(task => task.id === updatedTask.id))
       if(updatedTask.status_code === 3){
         const user = this.state.users.find(user => String(user.id) === String(updatedTask.user_id))

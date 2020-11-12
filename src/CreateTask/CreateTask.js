@@ -92,8 +92,6 @@ class CreateTask extends Component{
     const status_code = 1
     const due_date = this.state.dueDate.value
 
-    // const workstationId = Number(this.state.workstation.id)
-
     const task = { user_id, task_details, status_code, due_date}
     const options = {
       method: 'POST',
