@@ -8,21 +8,27 @@ class UserSummary extends Component{
   static contextType = ITManagerContext;
 
   state = {
-    tasks: []
+    tasks: [],
   }
 
   componentDidMount(){
-    const tasks = this.context.tasks.filter(task => task.user_id === this.props.id)
-    if(tasks){
-      this.setState({
-        tasks: tasks
-      })
+    if(this.context.tasks){
+      const tasks = this.context.tasks.filter(task => task.user_id === this.props.id)
+        this.setState({
+          tasks: tasks
+        })
     }
   }
 
   render(){
+    let os
+    let version
+    let memory
+    let free_space
     const { id, first_name, last_name, email, trade, role } = this.props
-    const { os, version, memory, free_space } = this.props.workstation
+    if(this.props.workstation ){
+       this.props.workstation = { os, version, memory, free_space }
+    }
     return(
       <div className={`UserSummary ${this.state.tasks.length !== 0 ? 'hasTasks' : ''}`}>
           <div className='usersum-details'>

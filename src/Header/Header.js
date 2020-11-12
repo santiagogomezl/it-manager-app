@@ -18,7 +18,7 @@ class Header extends Component{
 
   render(){
 
-    const dueTasks = this.context.tasks.length
+    const dueTasks = this.context.tasks ? this.context.tasks.length : ''
     const tasksMarker = <span className='tasks-marker'>{dueTasks} </span>
 
     return(

@@ -47,7 +47,7 @@ class User extends Component{
       })
       const tasks = this.context.tasks.filter((task) => String(task.user_id) === String(user.id))
       if(tasks){this.setState({ tasks: tasks})}
-    }else{
+    }else if(this.props.history){
       this.props.history.push('/dashboard')
     }
   }

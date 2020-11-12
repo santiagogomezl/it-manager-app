@@ -36,7 +36,7 @@ class CreateTask extends Component{
         this.props.history.push('/create-task')
       }
     }  
-    else{
+    else if(this.props.history){
       this.props.history.push('/dashboard')
     }
   }

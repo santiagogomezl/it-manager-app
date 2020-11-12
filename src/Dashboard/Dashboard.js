@@ -42,7 +42,7 @@ class Dashboard extends Component{
         return(<UserSummary key={key} {...user} trade={trade.name} role={role.title} workstation={workstation}/>)
         })
       ]
-    }else{
+    }else if(this.props.history){
       this.props.history.push(`/`);
     }
 

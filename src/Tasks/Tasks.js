@@ -78,7 +78,7 @@ class Tasks extends Component{
     render(){
 
     let tasks
-    if(this.state.tasks.length !== 0){
+    if(this.state.tasks && this.state.tasks.length !== 0){
         tasks = this.state.tasks.map((task, i) => {
             
             return(

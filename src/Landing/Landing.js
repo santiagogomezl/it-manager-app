@@ -52,7 +52,7 @@ class Landing extends Component{
               <img src={'./img/app-layout.png'} alt={'App Layout'}/>
             </div>
             <p>
-                <span>Cloud Based Management App</span><br/>
+                <span>Cloud Based IT Management App</span><br/>
                 Easily access your resources<br/> anywhere whether on your<br/> desktop or mobile device
             </p>
           </div>
