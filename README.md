@@ -24,13 +24,13 @@ Users Data, Tasks and History
 
 <img width="600" alt="Users Data, Tasks and History" src="https://user-images.githubusercontent.com/63277146/98894575-e5249000-2459-11eb-8e73-f4fdf02fbaab.png">
 
-Add/Edit User
+Add User
 
-<img width="600" alt="Add/Edit User" src="https://user-images.githubusercontent.com/63277146/98894573-e48bf980-2459-11eb-820e-6a907a67bd59.png">
+<img width="600" alt="Add User" src="https://user-images.githubusercontent.com/63277146/98894573-e48bf980-2459-11eb-820e-6a907a67bd59.png">
 
-Edit Users
+Edit User
 
-<img width="600" alt="Edit User" src="https://user-images.githubusercontent.com/63277146/95481429-d837ec80-0941-11eb-860e-77c228b3cd0c.png">
+<img width="600" alt="Edit User" src="https://user-images.githubusercontent.com/63277146/98894901-b0fd9f00-245a-11eb-9b26-940222273db2.png">
 
 Create Tasks
 
