@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const ITManagerContext = React.createContext({
     users : [],
@@ -10,6 +10,6 @@ const ITManagerContext = React.createContext({
     deleteUser: () => {},
     createTask: () => {},
     updateTask: () => {}
-});
+})
 
-export default ITManagerContext;
+export default ITManagerContext

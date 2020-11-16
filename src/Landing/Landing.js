@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//Font Awesome library for landing page icons
 import { faLaptop, faTasks, faUsersCog, faWrench } from '@fortawesome/free-solid-svg-icons'
 import './Landing.css'
 

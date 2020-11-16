@@ -5,7 +5,7 @@ import config from '../config'
 
 class Tasks extends Component{
 
-    static contextType = ITManagerContext;
+    static contextType = ITManagerContext
 
     state = {
         tasks: [],
@@ -35,8 +35,9 @@ class Tasks extends Component{
           return task.status_code
       }
 
+      //Updates (In progess) and deletes (completed) tasks from db 
       handleSubmit(event, callback){
-        event.preventDefault();
+        event.preventDefault()
         const tasks = this.state.tasks
 
         tasks.forEach(task => {
@@ -56,20 +57,20 @@ class Tasks extends Component{
             fetch(`${config.API_ENDPOINT}api/tasks/${task.id}`, options)
             .then(response => {
                 if(!response.ok){
-                    throw new Error('Something went wrong');
+                    throw new Error('Something went wrong')
                 }
             })
-            .catch(err => this.displayError(err));
+            .catch(err => this.displayError(err))
         })
 
-        callback(tasks);
+        callback(tasks)
         const updatedTasks = tasks.filter(task => task.status_code !== 3)
         this.setState(
             { 
                 tasks: updatedTasks,
                 disabled: true,
             }
-        );
+        )
 
       }
     

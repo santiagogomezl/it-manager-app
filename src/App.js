@@ -25,11 +25,13 @@ class App extends Component{
     }
 
   displayError(err){
-    console.log(err);
+    console.log(err)
   }
 
+  //Fetch data from db to build App from: 
   componentDidMount(){
-    const usersEndpoint = `${config.API_ENDPOINT}api/users`;
+    // api/users endpoint
+    const usersEndpoint = `${config.API_ENDPOINT}api/users`
     fetch(usersEndpoint, {
       method: 'GET',
       headers: {
@@ -48,9 +50,10 @@ class App extends Component{
         users: data
       })
     })
-    .catch(err => this.displayError(err));
+    .catch(err => this.displayError(err))
 
-    const tradesEndpoint = `${config.API_ENDPOINT}api/trades`;
+    // api/trades endpoint
+    const tradesEndpoint = `${config.API_ENDPOINT}api/trades`
     fetch(tradesEndpoint, {
       method: 'GET',
       headers: {
@@ -69,9 +72,10 @@ class App extends Component{
         trades: data
       })
     })
-    .catch(err => this.displayError(err));
+    .catch(err => this.displayError(err))
 
-    const rolesEndpoint = `${config.API_ENDPOINT}api/roles`;
+    // api/roles endpoint
+    const rolesEndpoint = `${config.API_ENDPOINT}api/roles`
     fetch(rolesEndpoint, {
       method: 'GET',
       headers: {
@@ -90,9 +94,10 @@ class App extends Component{
         roles: data
       })
     })
-    .catch(err => this.displayError(err));
+    .catch(err => this.displayError(err))
 
-    const workstationsEndpoint = `${config.API_ENDPOINT}api/workstations`;
+    // api/workstations endpoint
+    const workstationsEndpoint = `${config.API_ENDPOINT}api/workstations`
     fetch(workstationsEndpoint, {
       method: 'GET',
       headers: {
@@ -111,9 +116,10 @@ class App extends Component{
         workstations: data
       })
     })
-    .catch(err => this.displayError(err));
+    .catch(err => this.displayError(err))
 
-    const tasksEndpoint = `${config.API_ENDPOINT}api/tasks`;
+    // /api/tasks endpoint
+    const tasksEndpoint = `${config.API_ENDPOINT}api/tasks`
     fetch(tasksEndpoint, {
       method: 'GET',
       headers: {
@@ -132,7 +138,7 @@ class App extends Component{
         tasks: data
       })
     })
-    .catch(err => this.displayError(err));
+    .catch(err => this.displayError(err))
 
   }
 
@@ -172,12 +178,14 @@ class App extends Component{
     )
   }
 
+
   updateTask = (updatedTasks) => {
     let tasks = this.state.tasks
     let workstations = this.state.workstations
     let updatedWorkstation
     updatedTasks.forEach(updatedTask => {
       const taskIndex = tasks.indexOf(tasks.find(task => task.id === updatedTask.id))
+      //If task is completed, then PATCH workstation hotfix property
       if(updatedTask.status_code === 3){
         const user = this.state.users.find(user => String(user.id) === String(updatedTask.user_id))
         const workstationIndex = workstations.indexOf(workstations.find(workstation => workstation.id === user.workstation_id))
@@ -203,6 +211,7 @@ class App extends Component{
           hotfix_date: workstation.hotfix_date
         }
 
+        //Upon completed task, updates workstation hotfix (task history)
         const options = {
           method: 'PATCH',
           body: JSON.stringify(updatedWorkstation),
@@ -215,10 +224,10 @@ class App extends Component{
           fetch(`${config.API_ENDPOINT}api/workstations/${updatedWorkstation.id}`, options)
           .then(response => {
               if(!response.ok){
-                  throw new Error('Something went wrong');
+                  throw new Error('Something went wrong')
               }
           })
-          .catch(err => this.displayError(err));
+          .catch(err => this.displayError(err))
 
         tasks.splice(taskIndex,1)
         workstations[workstationIndex] = updatedWorkstation
@@ -235,6 +244,7 @@ class App extends Component{
   }
   
   render(){
+    //Creates App context value
     const contextValue = {
       users : this.state.users,
       trades : this.state.trades,
@@ -253,6 +263,7 @@ class App extends Component{
           <Header/>
           <main className='App'>
             <Switch>
+              {/* Site routes including NotFound */}
               <Route exact path='/' component={Landing}/>
 
               <Route path='/dashboard' component={Dashboard} />

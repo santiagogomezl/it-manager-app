@@ -6,7 +6,7 @@ import config from '../config'
 
 class UserForm extends Component{
 
-static contextType = ITManagerContext;
+static contextType = ITManagerContext
 
 state = { 
     id: '',
@@ -125,26 +125,26 @@ updateWorkstation(workstationId){
 }
 
 displayError(err){
-    alert(err);
+    alert(err)
 }
 
 validateFirstName(){
-    const firstName = this.state.firstName.value.trim();
+    const firstName = this.state.firstName.value.trim()
     if(firstName.length === 0){
         return <p className='form-error-msg'>{'First Name is required'}</p>  
     }
 }
 
 validateLastName(){
-    const lastName = this.state.lastName.value.trim();
+    const lastName = this.state.lastName.value.trim()
     if(lastName.length === 0){
         return <p className='form-error-msg'>{'Last Name is required'}</p>  
     }
 }
 
 validateEmail(){
-    const email = this.state.email.value.trim();
-    const re = /\S+@\S+\.\S+/;
+    const email = this.state.email.value.trim()
+    const re = /\S+@\S+\.\S+/
     if(!re.test(email)){
         return <p className='form-error-msg'>{'Email is required. Make sure it is a valid email format'}</p>  
     }
@@ -168,8 +168,9 @@ validateWorkstation(){
     }
 }
 
+//Handles AddUser (POST) and EditUser(PATCH) components
 handleSubmit(event, callback){
-    event.preventDefault();
+    event.preventDefault()
 
     const first_name = this.state.firstName.value
     const last_name = this.state.lastName.value
@@ -191,18 +192,18 @@ handleSubmit(event, callback){
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${config.API_KEY}`
             }
-          };
+          }
       
           fetch(path, options)
           .then(response => {
               if(!response.ok){
-                throw new Error('Something went wrong');
+                throw new Error('Something went wrong')
               }
-              return response;
+              return response
             })
             .then(response => response.json())
             .then(data => {
-              callback(data);
+              callback(data)
               this.setState(
                   {
                       id:'',
@@ -220,11 +221,11 @@ handleSubmit(event, callback){
                         freeSpace: '',
                       },
                   }
-              );
-              this.props.history.push(`/dashboard`);
+              )
+              this.props.history.push(`/dashboard`)
               }
             )
-            .catch(err => this.displayError(err));
+            .catch(err => this.displayError(err))
 
 
     }else if(this.props.header === 'Edit User'){
@@ -242,14 +243,14 @@ handleSubmit(event, callback){
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${config.API_KEY}`
             }
-          };
+          }
       
         fetch(path, options)
         .then(response => {
             if(!response.ok){
-                throw new Error('Something went wrong');
+                throw new Error('Something went wrong')
             }
-            callback(user);
+            callback(user)
             this.setState(
                 {
                     id:'',
@@ -267,14 +268,15 @@ handleSubmit(event, callback){
                     freeSpace: '',
                     },
                 }
-            );
-            this.props.history.push(`/dashboard`);
+            )
+            this.props.history.push(`/dashboard`)
             }
         )
-        .catch(err => this.displayError(err));
+        .catch(err => this.displayError(err))
     }
   }
 
+//Handles DELETE User from db
 handleDelete(id, callback){
 
         const method = 'DELETE'
@@ -286,14 +288,14 @@ handleDelete(id, callback){
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${config.API_KEY}`
             }
-          };
+          }
       
           fetch(path, options)
           .then(response => {
             if(!response.ok){
-                throw new Error('Something went wrong');
+                throw new Error('Something went wrong')
             }
-            callback(id);
+            callback(id)
             this.setState(
                 {
                     id:'',
@@ -311,36 +313,37 @@ handleDelete(id, callback){
                     freeSpace: '',
                     },
                 }
-            );
-            this.props.history.push(`/dashboard`);
+            )
+            this.props.history.push(`/dashboard`)
             }
         )
-        .catch(err => this.displayError(err));
+        .catch(err => this.displayError(err))
 
 }
 
 render(){
+    //Renders dropdown select elements for trades, roles and workstations
     const trades = this.context.trades.map((trade) => {
         const tradeId = trade.id
         const tradeName = trade.name
         return(
             <option key={`${tradeName}-${tradeId}`} value={`${tradeId}`}>{tradeName}</option>
-        );
-    });
+        )
+    })
     const roles = this.context.roles.map((role) => {
         const roleId = role.id
         const roleTitle = role.title
         return(
             <option key={`${roleTitle}-${roleId}`} value={`${roleId}`}>{roleTitle}</option>
-        );
-    });
+        )
+    })
     const workstations = this.context.workstations.map((workstation) => {
         const workstationId = workstation.id
         const hostName = workstation.host_name
         return(
             <option key={`${hostName}-${workstationId}`} value={`${workstationId}`}>{hostName}</option>
-        );
-    });
+        )
+    })
 
     return(
         <ITManagerContext.Consumer>

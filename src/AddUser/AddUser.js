@@ -4,6 +4,7 @@ import UserForm from '../UserForm/UserForm'
 
 class AddUser extends Component{
  
+  //Renders UserForm to add user to database
   render(){
     return(
       <div className='AddUser'>

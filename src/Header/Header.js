@@ -5,19 +5,20 @@ import './Header.css'
 
 class Header extends Component{
 
-  static contextType = ITManagerContext;
+  static contextType = ITManagerContext
 
+  //Main menu togggle button on mobile devices
   toggleMenu(){
     const toggleButton = document.querySelector('.header-toggle-menu')
     const headerMenu = document.querySelector('.header-menu')
 
     toggleButton.classList.toggle('clicked-toggle')
     headerMenu.classList.toggle('display-menu')
-
   }
 
   render(){
 
+    //Due tasks marker on Header component
     const dueTasks = this.context.tasks ? this.context.tasks.length : ''
     const tasksMarker = <span className='tasks-marker'>{dueTasks} </span>
 

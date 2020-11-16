@@ -5,7 +5,7 @@ import ITManagerContext from '../ITManagerContext'
 
 class UserSummary extends Component{
 
-  static contextType = ITManagerContext;
+  static contextType = ITManagerContext
 
   state = {
     tasks: [],
@@ -20,6 +20,7 @@ class UserSummary extends Component{
     }
   }
 
+  //Renders UserSummary component with user information on app dashboard
   render(){
     let os
     let version

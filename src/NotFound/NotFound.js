@@ -4,7 +4,7 @@ import './NotFound.css'
 
 class NotFound extends Component{
 
-
+  //Renders NotFound component
   render(){
     return(
       <div className='NotFound'>

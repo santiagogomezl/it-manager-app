@@ -19,7 +19,7 @@
     padding: 10px;
     text-align: left;
     color: white;
-    background-color: #009fd9;
+    background-color: #00526f;
 }
 
 .hero p{
@@ -28,7 +28,7 @@
 }
 
 .fa-icon{
-    color: #009fd9; 
+    color: #00526f; 
     font-size: 4em;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .landing-app-layout span{
-    color: #009fd9;
+    color: #00526f;
     font-weight: 700;
     text-transform: capitalize;
 }

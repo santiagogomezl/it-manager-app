@@ -61,7 +61,7 @@
     position: absolute;
     top: 6px;
     right: 10px;
-    background-color: #009fd9;
+    background-color: #00526f;
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -80,7 +80,7 @@
 }
 
 .clicked-toggle .menu-dash{
-    background-color: #009fd9;
+    background-color: #00526f;
 }
 
 .tasks-marker{
@@ -88,7 +88,7 @@
     height: 20px;
     margin-right: 5px;
     border-radius: 20px;
-    background-color: #009fd9;
+    background-color: #00526f;
     color: white;
     font-weight: 700;
     text-align: center;

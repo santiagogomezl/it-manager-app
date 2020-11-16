@@ -7,7 +7,7 @@ class Dashboard extends Component{
 
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       users: [],
       trades: [],
@@ -17,7 +17,7 @@ class Dashboard extends Component{
     }
   }
 
-  static contextType = ITManagerContext;
+  static contextType = ITManagerContext
 
   componentDidMount(){
       this.setState({
@@ -31,8 +31,8 @@ class Dashboard extends Component{
 
   render(){
 
+    //Renders all users UserSummary component on app dashboard
     let content = []
-    
     if(this.context.users.length !== 0){
       content = [content, this.state.users.map((user) => {
         const key = `user-${user.id}`
@@ -43,7 +43,7 @@ class Dashboard extends Component{
         })
       ]
     }else if(this.props.history){
-      this.props.history.push(`/`);
+      this.props.history.push(`/`)
     }
 
     return(

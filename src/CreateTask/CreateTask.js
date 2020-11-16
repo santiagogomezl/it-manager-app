@@ -5,7 +5,7 @@ import config from '../config'
 
 class CreateTask extends Component{
 
-  static contextType = ITManagerContext;
+  static contextType = ITManagerContext
 
   state = { 
     userId: {
@@ -41,7 +41,7 @@ class CreateTask extends Component{
     }
   }
 
-
+  //Functions to update component state
   updateUserId(userId){
     this.setState({
       userId: {value: userId, touched: true}
@@ -61,9 +61,10 @@ class CreateTask extends Component{
   }
 
   displayError(err){
-    alert(err);
+    alert(err)
 }
 
+  //Functions to validate users input
   validateUserId(){
     if(this.state.userId.value === 'Select User...'){
       return <p className='form-error-msg'>{'Select a User from the list'}</p>  
@@ -71,21 +72,22 @@ class CreateTask extends Component{
   }
 
   validateTaskDetails(){
-    const taskDetails = this.state.taskDetails.value.trim();
+    const taskDetails = this.state.taskDetails.value.trim()
     if(taskDetails.length === 0){
         return <p className='form-error-msg'>{'Task Details are required'}</p>  
     }
   }
 
   validateDueDate(){
-    const dueDate = this.state.dueDate.value.trim();
+    const dueDate = this.state.dueDate.value.trim()
     if(dueDate.length === 0){
         return <p className='form-error-msg'>{'Due Date is required'}</p>  
     }
   }
 
+  //POST new task to database and update IT Manager context
   handleSubmit(event, callback){
-    event.preventDefault();
+    event.preventDefault()
 
     const user_id = this.state.userId.value
     const task_details = this.state.taskDetails.value
@@ -100,29 +102,29 @@ class CreateTask extends Component{
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${config.API_KEY}`
       }
-    };
+    }
 
     fetch(`${config.API_ENDPOINT}api/tasks`, options)
     .then(response => {
         if(!response.ok){
-          throw new Error('Something went wrong');
+          throw new Error('Something went wrong')
         }
-        return response;
+        return response
       })
       .then(response => response.json())
       .then(data => {
-        callback(data);
+        callback(data)
         this.setState(
             {
                 userId:{value:''},
                 taskDetails:{value:''},
                 dueDate:{value:''},
             }
-        );
-        this.props.history.push(`/user/${user_id}`);
+        )
+        this.props.history.push(`/user/${user_id}`)
         }
       )
-      .catch(err => this.displayError(err));
+      .catch(err => this.displayError(err))
   }
 
   render(){
@@ -135,6 +137,7 @@ class CreateTask extends Component{
       )
     })
 
+    //Renders date input on form with min date
     const date = new Date()
     const month = ("0" + (date.getMonth() + 1)).slice(-2)
     const day = ("0" + date.getDate()).slice(-2)

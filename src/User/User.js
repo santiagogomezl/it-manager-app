@@ -6,7 +6,7 @@ import './User.css'
 
 class User extends Component{
 
-  static contextType = ITManagerContext;
+  static contextType = ITManagerContext
 
   state = { 
     id: '',
@@ -20,6 +20,7 @@ class User extends Component{
     disabled: true
   }
 
+  //Mounts User component with detailed data for each user
   componentDidMount(){
     const user = this.context.users.find(user => this.props.match.params.id === String(user.id))
     if(user){
@@ -54,6 +55,7 @@ class User extends Component{
 
   render(){
 
+    //Renders current workstation taks history i.e hotfixes
     let hotFixes
     if(this.state.workstation.hotfixId.length !== 0){
       const hotfixInfos = this.state.workstation.hotfixInfo
