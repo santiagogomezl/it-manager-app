@@ -12,27 +12,27 @@ https://it-manager-app.vercel.app/
 
 ### Landing Page
 
-<img width="600" alt="Landing Page" src="https://user-images.githubusercontent.com/63277146/98894569-e35acc80-2459-11eb-9f41-9d21bbc7c621.png">
+<img width="600" alt="Landing Page" src="https://user-images.githubusercontent.com/63277146/99322891-ce00ec00-2825-11eb-8707-71aa63dab1bc.png">
 
 ### Dashboard
 
-<img width="600" alt="Dashboard" src="https://user-images.githubusercontent.com/63277146/98894572-e48bf980-2459-11eb-9002-8675045de265.png">
+<img width="600" alt="Dashboard" src="https://user-images.githubusercontent.com/63277146/99322956-f1c43200-2825-11eb-964c-b6e9c7c7ba05.png">
 
 ### User Data, Tasks and History
 
-<img width="600" alt="User Data, Tasks and History" src="https://user-images.githubusercontent.com/63277146/98894575-e5249000-2459-11eb-8e73-f4fdf02fbaab.png">
+<img width="600" alt="User Data, Tasks and History" src="https://user-images.githubusercontent.com/63277146/99322895-d0634600-2825-11eb-8f9a-d5b5bf93f103.png">
 
 ### Add User
 
-<img width="600" alt="Add User" src="https://user-images.githubusercontent.com/63277146/98894573-e48bf980-2459-11eb-820e-6a907a67bd59.png">
+<img width="600" alt="Add User" src="https://user-images.githubusercontent.com/63277146/99322897-d0fbdc80-2825-11eb-93a6-72874aabace0.png">
 
 ### Edit User
 
-<img width="600" alt="Edit User" src="https://user-images.githubusercontent.com/63277146/98894901-b0fd9f00-245a-11eb-9b26-940222273db2.png">
+<img width="600" alt="Edit User" src="https://user-images.githubusercontent.com/63277146/99322899-d0fbdc80-2825-11eb-951b-5270f228eb12.png">
 
 ### Create Task
 
-<img width="600" alt="Create Task" src="https://user-images.githubusercontent.com/63277146/98894574-e5249000-2459-11eb-8ba0-e04133c24287.png">
+<img width="600" alt="Create Task" src="https://user-images.githubusercontent.com/63277146/99322901-d1947300-2825-11eb-9c19-e466594d4433.png">
 
 ## Technologies
 
