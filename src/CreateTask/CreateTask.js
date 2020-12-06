@@ -170,7 +170,7 @@ class CreateTask extends Component{
                         className={`${this.state.taskDetails.touched && this.validateTaskDetails() ? 'form-error' : ''}`}>
                         </textarea>
                     
-                        <label htmlFor='dueDate'>Choose an user:</label>
+                        <label htmlFor='dueDate'>Choose a date:</label>
                         <input 
                             type='date'
                             name='dueDate' 
